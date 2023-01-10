@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+:root{
+  --pink: #bd6b5f;
+  --red: rgb(162, 0, 0);
+}
+
+.blur-backg{
+  background-image: url(./pool.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.blur-backg::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 50%;
+}
+
+.backg{
+  background-image: url(./pool.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 92vh;
+  width: 92vw;
+  z-index: 1;
+  color: #fff;
+  max-width: 1600px;
+}
+
+.brand{
+  padding: 10vh 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h1{
+  font-size: clamp(25px, 4vw, 35px);
+  font-weight: 500;
+}
+
+h3{
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 300;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  min-width: 340px;
+  height: 100%;
+  position: relative;
+  gap: 25px;
+}
+
+.form-container::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--pink);
+  opacity: 70%;
+
+}
+
+.form-title{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10vh 0 0;
+  display: none;
+  z-index: 5;
+}
+
+h2{
+  font-size: 26px;
+  font-weight: 500;
+}
+
+h4{
+  font-size: 11px;
+  font-weight: 300;
+}
+
+h5{
+  font-size: 22px;
+  font-weight: 400;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 12%;
+  gap: 6px;
+  width: 70%;
+  z-index: 5;
+}
+
+.field{
+  position: relative;
+  font-size: 14px;
+  padding-top: 18px;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+input{
+  border: none;
+  appearance: none;
+  padding: 6px;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+  transition: border-color 0.2s;
+  color: #fff;
+}
+
+.placeholder{
+  position: absolute;
+  left: 10px;
+  top: calc(50% + 10px);
+  transform: translateY(-100%);
+  transition: all 0.3s ease;
+}
+
+.field input:valid + .placeholder, .field input:focus + .placeholder{
+  top: 10px;
+  font-size: 12px;
+}
+
+.eye{
+  width: 14px;
+  height: 12px;
+  position: absolute;
+  z-index: 6;
+  right: 10px;
+  bottom: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.see{
+  background-image: url(/Hotel_form/assets/see.png);
+}
+
+.unsee{
+  background-image: url(/Hotel_form/assets/unsee.png);
+}
+
+.form-bottom{
+  padding: 20px 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn{
+  width: 100%;
+  padding: 10px;
+  appearance: none;
+  border: none;
+  font-size: 14px;
+  color: var(--pink);
+}
+
+p{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.form-bottom span{
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-sign-in{
+  display: none;
+}
+
+.form-sign-up{
+  display: none;
+}
+
+.active{
+  display: flex;
+  animation: appear .7s ease;
+}
+
+small{
+  font-size: 12px;
+  font-weight: 500;
+  color:black;
+}
+
+.input-error{
+  border-bottom: 1px solid var(--red);
+  color: var(--red);
+  
+}
+
+.place-error{
+  color: var(--red);
+}
+
+
+@keyframes appear{
+  0%{
+    transform: translateY(50px);
+    opacity: 0%;
+  }
+
+  100%{
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+
+
+@media screen and ( max-width: 850px){
+  .form-title{
+    display: flex;
+  }
+  form{
+    top:0
+  }
+  .brand{
+    display: none;
+  }
+}
+@media screen and ( max-width: 450px){
+  .form-container{
+    width: 100%;
+    min-width: 280px;
+  }
+}

@@ -21,7 +21,7 @@
           <h2>White Ocean Resort</h2>
           <h4>Go ahead and relax, we'll take of everything else.</h4>
         </div>
-        <form class="form-sign-up active" novalidate>
+        <form class="form-sign-up active" novalidate autocomplete="off">
           <h5>Register</h5>
 
           <label for="name" class="field">
@@ -37,16 +37,16 @@
           </label>
 
           <label for="password" class="field">
-            <input type="text" required id="password"/>
+            <input type="password" required id="password"/>
             <span class="placeholder password">Password *</span>
-            <div class="eye unsee"></div>
+            <div class="eye unsee" id="password-eye"></div>
             <small></small>
           </label>
 
           <label for="confirm-password" class="field">
-            <input type="text" required id="confirm-password"/>
+            <input type="password" required id="confirm-password"/>
             <span class="placeholder">Confirm password *</span>
-            <div class="eye unsee"></div>
+            <div class="eye unsee" id="confirm-password-eye"></div>
             <small></small>
           </label>
 
@@ -62,7 +62,7 @@
           </div>
         </form>
 
-        <form class="form-sign-in">
+        <form class="form-sign-in" novalidate autocomplete="off">
           <h5>Sign in</h5>
 
           <label for="email" class="field">
@@ -74,7 +74,7 @@
           <label for="password" class="field">
               <input type="password" required id="user-password"/>
               <span class="placeholder">Password *</span>
-              <div class="eye unsee"></div>
+              <div class="eye unsee" id="user-password-eye"></div>
               <small></small>
           </label>
 

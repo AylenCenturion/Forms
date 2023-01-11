@@ -11,7 +11,7 @@
 
 :root{
   --pink: #bd6b5f;
-  --red: rgb(162, 0, 0);
+  --red: rgb(100, 8, 8);
 }
 
 .blur-backg{
@@ -84,7 +84,7 @@ h3{
   width: 100%;
   height: 100%;
   background-color: var(--pink);
-  opacity: 70%;
+  opacity: 75%;
 
 }
 
@@ -147,6 +147,12 @@ input{
   color: #fff;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #bd6c5f20 inset;
+}
+
 .placeholder{
   position: absolute;
   left: 10px;
@@ -166,18 +172,18 @@ input{
   position: absolute;
   z-index: 6;
   right: 10px;
-  bottom: 20px;
+  top: 25px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .see{
-  background-image: url(/Hotel_form/assets/see.png);
+  background-image: url(/Hotel-form/assets/see.png);
 }
 
 .unsee{
-  background-image: url(/Hotel_form/assets/unsee.png);
+  background-image: url(/Hotel-form/assets/unsee.png);
 }
 
 .form-bottom{
@@ -223,7 +229,7 @@ p{
 small{
   font-size: 12px;
   font-weight: 500;
-  color:black;
+  color:var(--red);
 }
 
 .input-error{

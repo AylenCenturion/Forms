@@ -15,6 +15,11 @@ const passwordEye = document.getElementById("password-eye");
 const confirmPasswordEye = document.getElementById("confirm-password-eye");
 const userPasswordEye = document.getElementById("user-password-eye");
 
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+const saveLocalStorage = (usersList) => {
+  localStorage.setItem('users', JSON.stringify(usersList));
+}
 
 const registerToggleForm = () => {
   formSignUp.classList.remove("active")
@@ -44,8 +49,6 @@ passwordEye.addEventListener("click", () => { toggleEye(passwordEye,passwordInpu
 confirmPasswordEye.addEventListener("click", () => {toggleEye(confirmPasswordEye, confirmPasswordInput)});
 
 userPasswordEye.addEventListener("click", () => {toggleEye(userPasswordEye,userPasswordInput)});
-
-
 
 const checkUsername = () => {
   let valid = false;
@@ -124,6 +127,8 @@ const checkUserEmail = () => {
     showError(userEmailInput, "This field is required")
   }else if(!isEmailValid(userEmailValue)){
     showError(userEmailInput, "The email is not valid")
+  }else if(users.some(user => userEmailValue !== user.email)){
+    showError(userEmailInput, "The email does not correspond to a registered user")
   }else{
     showSuccess(userEmailInput);
     valid = true;
@@ -134,10 +139,12 @@ const checkUserEmail = () => {
 const checkUserPassword = () => {
   let valid = false;
   const userPasswordValue = userPasswordInput.value.trim();
+  const userEmailValue = userEmailInput.value.trim();
+
   if(!userPasswordValue.length){
     showError(userPasswordInput, "This field is required")
-  }else if(!isPasswordValid(userPasswordValue)){
-    showError(userPasswordInput, "Password must be between 4 and 8 digits long and include at least one number.")
+  }else if(users.some(user => userPasswordValue !== user.password)){
+    showError(userPasswordInput, "The password is incorrect.")
   }else{
     showSuccess(userPasswordInput);
     valid = true;
@@ -162,7 +169,6 @@ const isPhoneValid = (phone) => {
 
   return re.test(phone)
 }
-
 
 const showError = (input, message) => {
   const formField = input.parentElement;
@@ -194,7 +200,17 @@ const submitSignUpForm = (e) => {
   let isFormValid = isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isPhoneValid
 
   if(isFormValid){
-    formSignUp.submit()
+    //    formSignUp.submit()
+    users = [...users, {name:nameInput.value, email: emailInput.value, password: passwordInput.value, phone:phoneInput.value, userId: users.length}]
+    
+    console.log(users)
+    saveLocalStorage(users)
+
+    nameInput.value = '';
+    emailInput.value = '';
+    passwordInput.value = '';
+    confirmPasswordInput.value = '';
+    phoneInput.value = '';
   }
 }
 
@@ -207,7 +223,10 @@ const submitSignInForm = (e) => {
   let isFormValid = isEmailValid && isPasswordValid
 
   if(isFormValid){
-    formSignIn.submit();
+    //    formSignIn.submit();
+    console.log(users)
+    userEmailInput.value = '';
+    userPasswordInput.value = '';
   }
 }
 
